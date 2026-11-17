@@ -60,9 +60,24 @@ public class GuardaRoupaTeste {
 //     * @return true se couber no orçamento
 //     */
 
+    //esse metodo nao esta funcionando corretamente
     @Test
-    @DisplayName("")
+    @DisplayName("Deve aceitar um look com preço igual ou abaixo do orçamentoo")
     public void deveCabeNoOrcamento() {
+
+        // ARRANGE - Criar objeto e definir os valores.
+        double orcamento = 200.00;
+        GuardaRoupa guardaRoupa = new GuardaRoupa(orcamento);
+        double preco = 200.00;
+
+        // ACT - Chamar o método
+
+        boolean resultado = guardaRoupa.cabeNoOrcamento(preco);
+
+        // ASSERT - Conferir se o valor bate com o esperado da regra
+
+        assertTrue(resultado,
+                () -> "O resultado deve ser verdadeiro enquanto o preco for igual ou menor a :" + orcamento);
 
     }
 
@@ -76,6 +91,7 @@ public class GuardaRoupaTeste {
 //     */
 
     @Test
+    @DisplayName("Deve considerar look de gala quando o preço for superior a R$ 200")
     public void deveEhDeGala() {
 
     }

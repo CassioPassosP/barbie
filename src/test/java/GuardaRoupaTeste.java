@@ -2,6 +2,7 @@ import org.example.GuardaRoupa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -93,6 +94,19 @@ public class GuardaRoupaTeste {
     @Test
     @DisplayName("Deve considerar look de gala quando o preço for superior a R$ 200")
     public void deveEhDeGala() {
+        // ARRANGE - Criar objeto e definir os valores.
+        double orcamento = 200.00;
+        GuardaRoupa guardaRoupa = new GuardaRoupa(orcamento);
+        double preco = 200.00;
+
+        // ACT - Chamar o método
+
+        boolean resultado = guardaRoupa.ehDeGala(preco);
+
+        // ASSERT - Conferir se o valor bate com o esperado da regra
+
+        assertTrue(resultado,
+                () -> "O resultado deve ser verdadeiro enquanto o preco for maior que 200");
 
     }
 
@@ -104,6 +118,21 @@ public class GuardaRoupaTeste {
 
     @Test
     public void deveRegistrarCompra() {
+        // ARRANGE - Criar objeto e definir os valores.
+        double orcamento = 200.00;
+        GuardaRoupa guardaRoupa = new GuardaRoupa(orcamento);
+        double preco = 200.00;
+
+        double orcamentoFinal = preco - orcamento;
+
+        // ACT - Chamar o método
+
+        guardaRoupa.registrarCompra(preco);
+
+        // ASSERT - Conferir se o valor bate com o esperado da regra
+
+        assertEquals(guardaRoupa.getOrcamento(),
+                orcamentoFinal);
 
     }
 
